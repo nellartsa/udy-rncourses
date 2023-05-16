@@ -1,8 +1,8 @@
-const GOOGLE_API_KEY = "AIzaSyAkcQIbdeZs6qIyUa-9G8eJQDyo3fwRAbg";
+import CONFIG from "react-native-config";
 
 export function getMapPreview(lat, lng) {
   const imagePreviewUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=14&size=400x200&maptype=roadmap
-    &markers=color:red%7Clabel:C%7C${lat},${lng}&key=${GOOGLE_API_KEY}`;
+    &markers=color:red%7Clabel:C%7C${lat},${lng}&key=${CONFIG.GOOGLE_MAP_API}`;
   console.log(imagePreviewUrl);
   return imagePreviewUrl;
 }
@@ -10,7 +10,7 @@ export function getMapPreview(lat, lng) {
 export async function getAddress(lat, lng) {
   console.log(lat);
   console.log(lng);
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_API_KEY}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${CONFIG.GOOGLE_MAP_API}`;
   const response = await fetch(url);
 
   if (!response.ok) {
